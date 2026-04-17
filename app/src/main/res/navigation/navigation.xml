@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/apiMusicFragment">
+
+
+    <fragment
+        android:id="@+id/apiMusicFragment"
+        android:name="com.martist.musicplayer.presentation.ApiMusicFragment"
+        android:label="ApiMusicFragment" >
+        <action
+            android:id="@+id/action_apiMusicFragment_to_playFragment"
+            app:destination="@id/playFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/apiMusicFragment"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="trackId"
+                app:argType="long" />
+            <argument
+                android:name="isDownloaded"
+                app:argType="boolean"
+               />
+        </action>
+        <action
+            android:id="@+id/action_apiMusicFragment_to_myMusicFragment"
+            app:destination="@id/myMusicFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/myMusicFragment"
+        android:name="com.martist.musicplayer.presentation.MyMusicFragment"
+        android:label="MyMusicFragment" >
+
+        <action
+            android:id="@+id/action_myMusicFragment_to_apiMusicFragment"
+            app:destination="@id/apiMusicFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_myMusicFragment_to_playFragment"
+            app:destination="@id/playFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/myMusicFragment"
+            app:popUpToInclusive="true">
+        <argument
+            android:name="trackId"
+            app:argType="long" />
+            <argument
+                android:name="isDownloaded"
+                app:argType="boolean"
+               />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/playFragment"
+        android:name="com.martist.musicplayer.presentation.PlayFragment"
+        android:label="PlayFragment"
+        >
+        <argument
+            android:name="trackId"
+            app:argType="long" />
+        <argument
+            android:name="isDownloaded"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
+
+
+
+</navigation>
